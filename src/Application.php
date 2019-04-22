@@ -39,7 +39,7 @@ class Application extends BaseApplication
 
         if (PHP_SAPI === 'cli') {
             try {
-                $this->addPlugin('Bake');
+                $this->addPlugin('DebugKit\Plugin');
             } catch (MissingPluginException $e) {
                 // Do not halt if the plugin is missing
             }
