@@ -32,30 +32,35 @@ class Application extends BaseApplication
     /**
      * {@inheritDoc}
      */
+    // public function bootstrap()
+    // {
+    //     // Call parent to load bootstrap from files.
+    //     parent::bootstrap();
+
+    //     if (PHP_SAPI === 'cli') {
+    //         try {
+    //             $this->addPlugin('Bake');
+    //         } catch (MissingPluginException $e) {
+    //             // Do not halt if the plugin is missing
+    //         }
+
+    //         $this->addPlugin('Migrations');
+    //     }
+
+    //     /*
+    //      * Only try to load DebugKit in development mode
+    //      * Debug Kit should not be installed on a production system
+    //      */
+    //     if (Configure::read('debug')) {
+    //         $this->addPlugin(\DebugKit\Plugin::class);
+    //     }
+    // }
     public function bootstrap()
     {
-        // Call parent to load bootstrap from files.
         parent::bootstrap();
-
-        if (PHP_SAPI === 'cli') {
-            try {
-                $this->addPlugin('DebugKit\Plugin');
-            } catch (MissingPluginException $e) {
-                // Do not halt if the plugin is missing
-            }
-
-            $this->addPlugin('Migrations');
-        }
-
-        /*
-         * Only try to load DebugKit in development mode
-         * Debug Kit should not be installed on a production system
-         */
-        if (Configure::read('debug')) {
-            $this->addPlugin(\DebugKit\Plugin::class);
-        }
+    
+        $this->addPlugin('DebugKit\Plugin');
     }
-
     /**
      * Setup the middleware queue your application will use.
      *
